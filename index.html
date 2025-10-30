@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyDeals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.28/bundled/lenis.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        img {
+            object-fit: contain;
+        }
+
+        .product-img {
+            width: 100%;
+            height: clamp(250px, 40vw, 350px);
+            /* consistent responsive height */
+            object-fit: contain;
+            /* keeps proportions */
+        }
+
+        /* Navbar hide/show animation */
+        nav {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        nav.hide {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        /* Reveal on scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delay for cards */
+        .reveal:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .reveal:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .reveal:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-700 text-white fixed w-full top-0 left-0 z-50">
+        <div
+            class="max-w-[1440px] mx-auto px-[clamp(15px,3vw,15px)] py-[clamp(20px,5vw,30px)] flex items-center justify-between">
+
+            <!-- Logo -->
+            <div class="text-[clamp(24px,5vw,35px)] font-bold tracking-wide">
+                <a href="#home">SkyDeals</a>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex space-x-[clamp(16px,2vw,32px)] text-[clamp(16px,1.5vw,22px)] font-medium">
+                <a href="#home" class="hover:text-blue-200">Home</a>
+                <a href="#tabs" class="hover:text-blue-200">iPads</a>
+                <a href="#faq" class="hover:text-blue-200">FAQs</a>
+                <a href="#contact" class="hover:text-blue-200">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
+            <a href="#home" class="block px-6 py-3 hover:bg-blue-500">Home</a>
+            <a href="#tabs" class="block px-6 py-3 hover:bg-blue-500">iPads</a>
+            <a href="#faq" class="block px-6 py-3 hover:bg-blue-500">FAQs</a>
+            <a href="#contact" class="block px-6 py-3 hover:bg-blue-500">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero / Home Section -->
+    <section id="home" class="bg-blue-600 text-white py-[clamp(80px,15vw,128px)] mt-[clamp(70px,12vw,90px)]">
+        <div class="max-w-[1440px] mx-auto text-center px-[clamp(20px,4vw,24px)]">
+            <h1
+                class="text-[clamp(28px,6vw,48px)] md:text-[clamp(36px,7vw,60px)] font-bold mb-[clamp(20px,3vw,24px)] reveal">
+                SkyDeals – Your Ultimate Mobile & <br> Gadget Destination
+            </h1>
+            <p
+                class="text-[clamp(16px,2.5vw,18px)] md:text-[clamp(18px,3vw,24px)] text-blue-100 mb-[clamp(24px,4vw,32px)] reveal">
+                Discover the best phones, tablets, and accessories — all in one trusted store.
+            </p>
+            <a href="#tabs"
+                class="inline-block bg-white text-blue-700 px-[clamp(24px,4vw,32px)] py-[clamp(10px,2vw,12px)] rounded-full font-semibold text-[clamp(16px,2vw,18px)] shadow-md hover:bg-blue-100 transition reveal">
+                Shop Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Phones Section -->
+    <section class="bg-gray-50 py-[clamp(60px,12vw,100px)]">
+        <div class="max-w-[1440px] mx-auto px-[clamp(20px,3vw,20px)] text-center">
+            <h2 class="text-[clamp(28px,5vw,40px)] font-bold text-gray-900 mb-[clamp(8px,1.5vw,10px)] reveal">
+                Latest iPhones & Mobiles
+            </h2>
+            <p class="text-[clamp(16px,2.5vw,20px)] text-gray-600 mb-[clamp(40px,6vw,60px)] reveal">
+                Explore our latest collection of flagship smartphones.
+            </p>
+
+            <!-- FLEX CONTAINER (2 rows, centered) -->
+            <div class="flex flex-wrap justify-center gap-[clamp(20px,4vw,40px)]">
+
+                <!-- iPhone 16e -->
+                <div
+                    class="reveal bg-white rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/iphone16e.jpeg" alt=""
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">
+                        iPhone 16e
+                    </h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">
+                        Unmatched power and camera brilliance.
+                    </p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- iPhone 17 -->
+                <div
+                    class="reveal bg-white rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/iphone-17.jpeg" alt=""
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">
+                        iPhone 17</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">A new era of
+                        performance and design.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <!-- iPhone 17 Air -->
+                <div
+                    class="reveal bg-white rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/iphone-air.jpeg" alt=""
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">
+                        iPhone 17 Air</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Feather-light, yet
+                        fiercely powerful.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <!-- iPhone 17 Pro -->
+                <div
+                    class="reveal bg-white rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/iphone-17pro.jpeg" alt=""
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">
+                        iPhone 17 Pro</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Engineered for
+                        professionals. Designed for everyone.
+                    </p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+
+                <!-- Samsung S25 Ultra -->
+                <div
+                    class="reveal bg-white rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/s25.png" alt=""
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">
+                        Samsung S25 Ultra</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Epic power and
+                        visionary camera performance.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <div
+                    class="reveal bg-gray-50 rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/sim.png" alt="Apple Airpods Pro"
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">Apple
+                        Sim only</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Essential features
+                        at an incredible value.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- iPads & Watches Section -->
+    <section id="tabs" class="bg-white py-[clamp(60px,12vw,100px)]">
+        <div class="max-w-[1440px] mx-auto px-[clamp(20px,3vw,20px)] text-center">
+            <h2 class="text-[clamp(28px,5vw,40px)] font-bold text-gray-900 mb-[clamp(8px,1.5vw,10px)] reveal">
+                Latest iPads & Apple Watches
+            </h2>
+            <p class="text-[clamp(16px,2.5vw,20px)] text-gray-600 mb-[clamp(40px,6vw,60px)] reveal">
+                Stylish, powerful, and built to keep up with your lifestyle.
+            </p>
+
+            <!-- FLEX CONTAINER (2 rows, centered) -->
+            <div class="flex flex-wrap justify-center gap-[clamp(20px,4vw,40px)]">
+
+                <!-- iPad Pro -->
+                <div
+                    class="reveal bg-gray-50 rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/ipad-pro (1).png" alt="iPad Pro"
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">iPad
+                        Pro M2 11 inch</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Unleash desktop
+                        power in your hands.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <!-- iPad Air -->
+                <div
+                    class="reveal bg-gray-50 rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/ipad-air-11-inch-m2.png" alt="iPad Air"
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">iPad
+                        Air M2 11 inch</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Lightweight design.
+                        Pro-level performance.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <!-- Apple Watch Series 10 -->
+                <div
+                    class="reveal bg-gray-50 rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/s11.png" alt="Apple Watch Series 10"
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">Apple
+                        Watch Series 10</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Track health, stay
+                        connected, look great.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <!-- Apple Watch SE -->
+                <div
+                    class="reveal bg-gray-50 rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/se-.png" alt="Apple Watch SE"
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">Apple
+                        Watch SE 3</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Essential features
+                        at an incredible value.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+                <!-- Apple Airpods Pro -->
+                <div
+                    class="reveal bg-gray-50 rounded-[clamp(16px,2.5vw,20px)] shadow-lg hover:shadow-2xl transition p-[clamp(20px,3vw,30px)] w-full max-w-[400px]">
+                    <img src="/assets/airpods-pro-3-hero-select-202509.png" alt="Apple Airpods Pro"
+                        class="w-full h-[clamp(250px,40vw,350px)] object-contain mb-[clamp(16px,2.5vw,25px)]">
+                    <h3 class="text-[clamp(20px,3vw,26px)] font-semibold mb-[clamp(8px,1.5vw,10px)] text-gray-900">Apple
+                        Airpods Pro 3</h3>
+                    <p class="text-[clamp(14px,2vw,18px)] text-gray-600 mb-[clamp(16px,2.5vw,20px)]">Essential features
+                        at an incredible value.</p>
+                    <a href="tel:+123456789">
+                        <button
+                            class="bg-blue-700 text-white px-[clamp(24px,4vw,40px)] py-[clamp(10px,2vw,14px)] rounded-full text-[clamp(14px,2vw,18px)] font-medium hover:bg-blue-800 transition">
+                            Call Now
+                        </button>
+                    </a>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section id="faq" class="bg-gray-50 py-[clamp(60px,12vw,100px)]">
+        <div class="max-w-[1440px] mx-auto px-[clamp(20px,4vw,24px)] text-center">
+            <h2 class="text-[clamp(28px,5vw,40px)] font-bold mb-[clamp(32px,5vw,40px)] text-gray-900 reveal">Frequently
+                Asked Questions</h2>
+
+            <div class="max-w-[800px] mx-auto text-left space-y-4">
+
+                <!-- Accordion Items -->
+                <div class="reveal border rounded-lg overflow-hidden">
+                    <button
+                        class="w-full text-left px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] bg-white font-semibold flex justify-between items-center faq-btn text-[clamp(14px,2vw,16px)]">
+                        What payment methods do you accept?
+                        <span class="text-blue-600 text-2xl">+</span>
+                    </button>
+                    <div
+                        class="px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] hidden text-gray-700 text-[clamp(14px,1.8vw,16px)]">
+                        We accept major credit/debit cards, bank transfers, and COD in select areas.
+                    </div>
+                </div>
+
+                <div class="reveal border rounded-lg overflow-hidden">
+                    <button
+                        class="w-full text-left px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] bg-white font-semibold flex justify-between items-center faq-btn text-[clamp(14px,2vw,16px)]">
+                        How long does delivery take?
+                        <span class="text-blue-600 text-2xl">+</span>
+                    </button>
+                    <div
+                        class="px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] hidden text-gray-700 text-[clamp(14px,1.8vw,16px)]">
+                        Orders usually arrive within 3–5 business days.
+                    </div>
+                </div>
+
+                <div class="reveal border rounded-lg overflow-hidden">
+                    <button
+                        class="w-full text-left px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] bg-white font-semibold flex justify-between items-center faq-btn text-[clamp(14px,2vw,16px)]">
+                        Are your products original?
+                        <span class="text-blue-600 text-2xl">+</span>
+                    </button>
+                    <div
+                        class="px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] hidden text-gray-700 text-[clamp(14px,1.8vw,16px)]">
+                        Yes, all products are 100% genuine with manufacturer warranty.
+                    </div>
+                </div>
+
+                <div class="reveal border rounded-lg overflow-hidden">
+                    <button
+                        class="w-full text-left px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] bg-white font-semibold flex justify-between items-center faq-btn text-[clamp(14px,2vw,16px)]">
+                        Do you offer trade-in or exchange?
+                        <span class="text-blue-600 text-2xl">+</span>
+                    </button>
+                    <div
+                        class="px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] hidden text-gray-700 text-[clamp(14px,1.8vw,16px)]">
+                        Currently, we do not offer trade-ins but plan to add that soon.
+                    </div>
+                </div>
+
+                <div class="reveal border rounded-lg overflow-hidden">
+                    <button
+                        class="w-full text-left px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] bg-white font-semibold flex justify-between items-center faq-btn text-[clamp(14px,2vw,16px)]">
+                        Can I cancel my order?
+                        <span class="text-blue-600 text-2xl">+</span>
+                    </button>
+                    <div
+                        class="px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] hidden text-gray-700 text-[clamp(14px,1.8vw,16px)]">
+                        Yes, orders can be cancelled before shipment is processed.
+                    </div>
+                </div>
+
+                <div class="reveal border rounded-lg overflow-hidden">
+                    <button
+                        class="w-full text-left px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] bg-white font-semibold flex justify-between items-center faq-btn text-[clamp(14px,2vw,16px)]">
+                        Do you provide after-sales support?
+                        <span class="text-blue-600 text-2xl">+</span>
+                    </button>
+                    <div
+                        class="px-[clamp(16px,3vw,24px)] py-[clamp(12px,2vw,16px)] hidden text-gray-700 text-[clamp(14px,1.8vw,16px)]">
+                        Absolutely! Our support team is available 24/7 to assist with any issues.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-blue-700 text-white py-[clamp(40px,8vw,48px)]">
+        <div
+            class="max-w-[1440px] mx-auto px-[clamp(20px,4vw,24px)] grid grid-cols-1 md:grid-cols-3 gap-[clamp(32px,5vw,40px)] items-start">
+
+            <!-- Left -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left reveal">
+                <h3 class="text-[clamp(24px,4vw,30px)] font-bold mb-[clamp(8px,1.5vw,12px)]">SkyDeals</h3>
+                <p class="text-blue-200 max-w-[320px] leading-relaxed text-[clamp(14px,2vw,16px)]">
+                    Your trusted source for premium mobiles, tablets, and accessories.
+                </p>
+            </div>
+
+            <!-- Center -->
+            <div class="flex flex-col items-center text-center reveal">
+                <div
+                    class="flex flex-wrap justify-center gap-[clamp(16px,3vw,32px)] text-blue-200 mb-[clamp(20px,3vw,24px)] text-[clamp(14px,2vw,16px)]">
+                    <a href="#home" class="hover:text-blue-300 transition">Home</a>
+                    <a href="#tabs" class="hover:text-blue-300 transition">iPads</a>
+                    <a href="#faq" class="hover:text-blue-300 transition">FAQs</a>
+                    <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
+                </div>
+                <div class="text-blue-300 text-[clamp(12px,1.8vw,14px)] mt-auto">
+                    © 2025 SkyDeals. All rights reserved.
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div
+                class="flex flex-col items-center md:items-end text-center md:text-right text-blue-200 reveal text-[clamp(14px,2vw,16px)]">
+                <h4 class="font-semibold mb-[clamp(6px,1vw,8px)] text-white">Get in Touch</h4>
+                <p>Email:
+                    <a href="mailto:support@skydeals.com" class="hover:text-blue-300">support@skydeals.com</a>
+                </p>
+                <p>Phone:
+                    <a href="tel:+123456789" class="hover:text-blue-300">+1 234 567 89</a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                content.classList.toggle('hidden');
+                btn.querySelector('span').textContent =
+                    content.classList.contains('hidden') ? '+' : '-';
+            });
+        });
+
+        // Navbar hide/show on scroll
+        const nav = document.querySelector('nav');
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.classList.add('hide');
+            } else {
+                nav.classList.remove('hide');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Reveal on scroll animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Reveal when in view
+                if (rect.top < windowHeight * 0.9 && rect.bottom > 0) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        // Run on load (fixes footer reveal issue)
+        window.addEventListener('load', revealOnScroll);
+
+        // Run on scroll
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Run on resize (helps if layout changes)
+        window.addEventListener('resize', revealOnScroll);
+    </script>
+
+
+</body>
+
+</html>
